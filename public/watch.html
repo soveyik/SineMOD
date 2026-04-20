@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İzle | SineMOD</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans pt-24">
+    
+    <!-- Sabit Glassmorphism Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5 py-4 px-8 flex justify-between items-center">
+        <a href="/" class="group flex items-center space-x-2">
+            <span class="text-3xl font-black tracking-tighter text-blue-500 uppercase italic transition-colors group-hover:text-white">SineMOD</span>
+        </a>
+        <div id="nav-right" class="flex items-center space-x-6 text-sm font-semibold"></div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 animate-fade-in">
+            
+            <!-- Video ve Bilgi Bölümü -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Video Oynatıcı -->
+                <div class="aspect-video bg-black rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10 relative">
+                    <iframe id="video-player" src="" frameborder="0" allowfullscreen class="w-full h-full"></iframe>
+                </div>
+
+                <div id="movie-info" class="space-y-4">
+                    <h1 id="movie-title" class="text-4xl font-bold tracking-tight">Yükleniyor...</h1>
+                    <div class="flex items-center space-x-4 text-sm font-bold">
+                        <span id="movie-meta" class="bg-blue-600/20 text-blue-400 px-3 py-1 rounded-lg">0 İzlenme</span>
+                        <span class="text-gray-500 uppercase tracking-widest text-xs">2026 • FHD</span>
+                    </div>
+                    <p id="movie-desc" class="text-gray-400 leading-relaxed text-lg max-w-3xl"></p>
+                </div>
+            </div>
+
+            <!-- Yorumlar Bölümü -->
+            <aside class="space-y-6">
+                <div class="glass p-8 rounded-3xl space-y-6 border border-white/5">
+                    <h3 class="text-xl font-bold flex items-center space-x-2">
+                        <span class="h-2 w-2 bg-blue-500 rounded-full"></span>
+                        <span>Yorumlar</span>
+                    </h3>
+                    
+                    <!-- Yorum Yazma -->
+                    <form id="comment-form" class="space-y-4">
+                        <textarea id="comment-content" required placeholder="Düşüncelerini paylaş..." class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-sm focus:outline-none focus:border-blue-500 transition-all min-h-[120px] placeholder:text-gray-600"></textarea>
+                        
+                        <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-gray-500">
+                            <label class="flex items-center cursor-pointer hover:text-white transition-colors">
+                                <input type="checkbox" id="is-spoiler" class="mr-2 accent-blue-500">
+                                Spoiler İçeriyor
+                            </label>
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition-all shadow-lg shadow-blue-600/20">Gönder</button>
+                        </div>
+                        <div id="comment-status" class="text-xs font-bold mt-2 hidden"></div>
+                    </form>
+
+                    <div class="h-px bg-white/5 w-full"></div>
+
+                    <!-- Yorum Listesi -->
+                    <div id="comment-list" class="space-y-4 max-h-[450px] overflow-y-auto pr-2 custom-scrollbar">
+                        <!-- Yorumlar JS ile yüklenecek -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script type="module">
+        import { app } from '/js/app.js';
+        import '/js/watch.js';
+    </script>
+</body>
+</html>

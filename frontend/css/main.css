@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: 'Outfit', sans-serif;
+  --color-brand: #3b82f6;
+  --color-brand-dark: #1d4ed8;
+  --color-accent: #f59e0b;
+}
+
+:root {
+  --glass: rgba(17, 24, 39, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --bg-gradient: radial-gradient(circle at top, #1e293b 0%, #0f172a 100%);
+}
+
+body {
+  background: var(--bg-gradient);
+  color: #f9fafb;
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh;
+}
+
+/* Cam Morfizmi (Glassmorphism) Efektleri */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Sinematik Animasyonlar */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Film Kartı Hover Efekti */
+.movie-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+/* Kategori Butonları */
+.category-pill {
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.category-pill:hover, .category-pill.active {
+  background: #3b82f6;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  border-color: rgba(255, 255, 255, 0.2);
+}

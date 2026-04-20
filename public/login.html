@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Yap | SineMOD</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen relative overflow-hidden">
+    
+    <!-- Arka Plan Görseli -->
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80&w=1920" class="w-full h-full object-cover opacity-30" alt="Background">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    </div>
+
+    <div class="glass p-10 rounded-3xl shadow-2xl w-full max-w-md relative z-10 animate-fade-in border border-white/10">
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-black tracking-tighter text-blue-500 uppercase italic mb-2">SineMOD</h1>
+            <p class="text-gray-400 text-sm font-medium uppercase tracking-widest">Sinemaya Giriş Yap</p>
+        </div>
+        
+        <form id="login-form" class="space-y-6">
+            <div class="space-y-1">
+                <label class="text-xs font-bold text-gray-500 uppercase px-1">E-Posta Adresi</label>
+                <input type="email" id="email" required placeholder="ornek@mail.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors placeholder:text-gray-600">
+            </div>
+            <div class="space-y-1">
+                <label class="text-xs font-bold text-gray-500 uppercase px-1">Şifre</label>
+                <input type="password" id="password" required placeholder="••••••••" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 transition-colors placeholder:text-gray-600">
+            </div>
+            
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-blue-600/30 active:scale-95">Giriş Yap</button>
+            <div id="status-msg" class="text-sm mt-3 text-center hidden"></div>
+        </form>
+
+        <p class="mt-8 text-center text-gray-400 text-sm font-medium">
+            Henüz hesabınız yok mu? <a href="/register" class="text-blue-500 hover:text-blue-400 font-bold transition-colors">Ücretsiz Kaydol</a>
+        </p>
+    </div>
+
+    <script type="module" src="/js/login.js"></script>
+</body>
+</html>

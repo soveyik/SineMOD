@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yönetim Paneli | Film Platformu</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Chart.js CDN (Grafikler için) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex">
+    
+    <!-- Yan Menü (Sidebar) -->
+    <aside class="w-64 bg-gray-800 border-r border-gray-700 p-6 flex flex-col">
+        <h2 class="text-xl font-bold mb-10 text-blue-500">ADMİN PANELİ</h2>
+        <nav class="flex-1 space-y-4">
+            <a href="/" class="block hover:text-blue-400">← Siteye Dön</a>
+            <a href="#stats" class="block font-medium text-blue-400">Genel Bakış</a>
+            <a href="#movies" class="block hover:text-blue-400 font-medium">Film Yönetimi</a>
+        </nav>
+        <button id="admin-logout" class="text-sm text-red-500 text-left hover:underline">Oturumu Kapat</button>
+    </aside>
+
+    <!-- Ana Panel -->
+    <main class="flex-1 p-10 overflow-y-auto">
+        
+        <!-- İstatistik Bölümü -->
+        <section id="stats" class="mb-12">
+            <h1 class="text-3xl font-bold mb-8">Genel Bakış</h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+                <div class="bg-gray-800 p-6 rounded-lg border-l-4 border-blue-500">
+                    <p class="text-gray-400 text-sm">Toplam Kullanıcı</p>
+                    <p id="stat-users" class="text-3xl font-bold">0</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border-l-4 border-green-500">
+                    <p class="text-gray-400 text-sm">Toplam Film</p>
+                    <p id="stat-movies" class="text-3xl font-bold">0</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border-l-4 border-amber-500">
+                    <p class="text-gray-400 text-sm">Toplam İzlenme</p>
+                    <p id="stat-views" class="text-3xl font-bold">0</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border-l-4 border-purple-500">
+                    <p class="text-gray-400 text-sm">Toplam Yorum</p>
+                    <p id="stat-comments" class="text-3xl font-bold">0</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-lg">
+                <h3 class="font-bold mb-4">En Popüler 10 Film</h3>
+                <canvas id="pop-chart" class="max-h-[300px]"></canvas>
+            </div>
+        </section>
+
+        <!-- Film Ekleme Bölümü -->
+        <section id="movies">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Film Yönetimi</h2>
+                <button id="show-add-modal" class="bg-blue-600 px-4 py-2 rounded text-sm hover:bg-blue-700">+ Yeni Film Ekle</button>
+            </div>
+
+            <div class="bg-gray-800 rounded-lg overflow-hidden">
+                <table class="w-full text-left">
+                    <thead class="bg-gray-700 text-xs uppercase text-gray-400">
+                        <tr>
+                            <th class="px-6 py-4">Başlık</th>
+                            <th class="px-6 py-4">Kategoriler</th>
+                            <th class="px-6 py-4">İzlenme</th>
+                            <th class="px-6 py-4">Eklenme Tarihi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-movie-list" class="divide-y divide-gray-700 text-sm">
+                        <!-- Filmler buraya gelecek -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Film Ekleme Modalı (Popup) -->
+    <div id="add-modal" class="fixed inset-0 bg-black bg-opacity-75 hidden flex items-center justify-center p-4">
+        <div class="bg-gray-800 w-full max-w-2xl p-8 rounded-lg">
+            <h2 class="text-2xl font-bold mb-6">Yeni İçerik Ekle</h2>
+            <form id="add-movie-form" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm mb-1">Film Başlığı</label>
+                        <input type="text" id="add-title" required class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                    </div>
+                    <div>
+                        <label class="block text-sm mb-1">Video (Iframe) URL</label>
+                        <input type="text" id="add-video-url" required class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2" placeholder="https://www.youtube.com/embed/...">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm mb-1">Kapak Görseli URL</label>
+                    <input type="text" id="add-thumb-url" required class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                </div>
+                <div>
+                    <label class="block text-sm mb-1">Açıklama</label>
+                    <textarea id="add-desc" required class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2 min-h-[100px]"></textarea>
+                </div>
+                
+                <div class="flex justify-end space-x-3 mt-6">
+                    <button type="button" id="close-modal" class="px-4 py-2 text-gray-400 hover:text-white">İptal</button>
+                    <button type="submit" class="bg-blue-600 px-6 py-2 rounded font-bold hover:bg-blue-700">Filmi Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="/js/admin.js"></script>
+</body>
+</html>

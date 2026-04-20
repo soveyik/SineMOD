@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SineMOD | Sinemanın Dijital Dünyası</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans selection:bg-blue-500 selection:text-white">
+    
+    <!-- Sabit Glassmorphism Navbar -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5 py-4 px-8 flex justify-between items-center">
+        <a href="/" class="group flex items-center space-x-2">
+            <span class="text-3xl font-black tracking-tighter text-blue-500 uppercase italic group-hover:text-white transition-colors">SineMOD</span>
+            <div class="h-2 w-2 rounded-full bg-orange-500 animate-pulse"></div>
+        </a>
+        
+        <div id="nav-right" class="flex items-center space-x-6 text-sm font-semibold">
+            <!-- Dinamik Login/Profil bölümü -->
+        </div>
+    </nav>
+
+    <!-- Hero Section (Karşılama Ekranı) -->
+    <header class="relative h-[70vh] flex items-center px-12 pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/80 to-transparent"></div>
+            <!-- Dinamik bir görsel buraya gelebilir (Örn: Hero Image) -->
+             <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?auto=format&fit=crop&q=80&w=1920" class="w-full h-full object-cover opacity-40" alt="Hero Background">
+        </div>
+
+        <div class="relative z-10 max-w-2xl animate-fade-in">
+            <span class="inline-block bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-4">Öne Çıkanlar</span>
+            <h1 class="text-6xl font-bold mb-6 leading-tight">Sınırların Ötesinde Bir Sinema Deneyimi</h1>
+            <p class="text-lg text-gray-300 mb-8 leading-relaxed">En yeni filmler, kült klasikler ve AI destekli kişiselleştirilmiş önerilerle SineMOD'da yerinizi alın.</p>
+            <div class="flex space-x-4">
+                <a href="#movie-grid" class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-blue-600/20">Hemen İzle</a>
+                <a href="/register" class="glass hover:bg-white/10 px-8 py-3 rounded-xl font-bold transition-all">Aramıza Katıl</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="container mx-auto px-6 py-12">
+        
+        <!-- Kategori Filtresi (Yenilenmiş Tasarım) -->
+        <h3 class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-4">Keşfet</h3>
+        <div class="flex space-x-3 mb-12 overflow-x-auto pb-4 no-scrollbar" id="category-list">
+            <button class="category-pill active bg-blue-600 px-6 py-2 rounded-xl text-sm font-bold whitespace-nowrap shadow-xl" data-id="">Tümü</button>
+            <!-- Kategoriler buraya gelecek -->
+        </div>
+
+        <!-- Film Listesi -->
+        <section id="movie-grid-section">
+            <div class="flex justify-between items-end mb-8">
+                <h2 class="text-3xl font-bold" id="grid-title">Popüler İçerikler</h2>
+                <div class="h-1 flex-1 mx-8 bg-white/5 rounded-full hidden md:block"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 lg:gap-8" id="movie-grid">
+                <!-- Filmler Modern Kart Tasarımıyla buraya gelecek -->
+            </div>
+        </section>
+    </main>
+
+    <script type="module">
+        import { app } from '/js/app.js';
+        import '/js/home.js';
+    </script>
+</body>
+</html>

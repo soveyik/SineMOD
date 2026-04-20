@@ -1,0 +1,1 @@
+var n={async get(r){let t=await fetch(r);if(!t.ok){let o=await t.json();throw new Error(o.message||"Bir hata olu\u015Ftu.")}return t.json()},async post(r,t){let o=await fetch(r,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(t)}),s=await o.json();if(!o.ok)throw new Error(s.message||"Bir hata olu\u015Ftu.");return s}};export{n as api};
